@@ -1,8 +1,11 @@
 using VecozoApi;
+using VecozoApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // registratie
+builder.Services.AddTransient<ShowRepository>();
+
 builder.Services
     .AddGraphQLServer()
     .ModifyRequestOptions(options => options.IncludeExceptionDetails = builder.Environment.IsDevelopment())

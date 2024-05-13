@@ -1,4 +1,5 @@
 ﻿using VecozoApi.Entities;
+using VecozoApi.Repositories;
 
 namespace VecozoApi;
 
@@ -14,4 +15,9 @@ public class Query
         Title = "Debiteuren crediteuren",
         ReleaseDate = new DateOnly(1995, 1, 1)
     };
+
+    public async Task<IEnumerable<Show>> Shows([Service] ShowRepository showRepository)
+    {
+        return await showRepository.GetAll();
+    }
 }

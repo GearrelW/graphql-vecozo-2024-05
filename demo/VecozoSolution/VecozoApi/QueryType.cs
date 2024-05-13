@@ -1,4 +1,8 @@
-﻿namespace VecozoApi;
+﻿using VecozoApi.Entities;
+using VecozoApi.Repositories;
+using VecozoApi.Types;
+
+namespace VecozoApi;
 
 public class QueryType : ObjectType<Query>
 {
@@ -14,6 +18,15 @@ public class QueryType : ObjectType<Query>
             {
                 return "hey nu vanuit resolve";
             });
+
+        descriptor
+            .Field(f => f.Shows)
+            .Type<NonNullType<ListType<NonNullType<ShowType>>>>();
+            //.Resolve(async ctx =>
+            //{
+            //    var showRepository = ctx.Service<ShowRepository>();
+            //    return await showRepository.GetAll();
+            //});
 
         //descriptor
         //    .Field(f => f.Tekstje)
