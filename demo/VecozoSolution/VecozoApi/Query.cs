@@ -16,8 +16,19 @@ public class Query
         ReleaseDate = new DateOnly(1995, 1, 1)
     };
 
-    public async Task<IEnumerable<Show>> Shows([Service] ShowRepository showRepository)
-    {
-        return await showRepository.GetAll();
-    }
+    public IEnumerable<Show> Shows { get; set; }
+
+    public Show GetShowById { get; set; }
+
+    public Show? FindShowByTitleAndReleaseYear { get; set; }
+
+    //public Show GetShowById2(int id, [Service] )
+    //{
+
+    //}
+
+    //public async Task<IEnumerable<Show>> Shows([Service] ShowRepository showRepository)
+    //{
+    //    return await showRepository.GetAll();
+    //}
 }

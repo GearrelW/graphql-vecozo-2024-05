@@ -30,4 +30,14 @@ public class ShowRepository
     {
         return Task.FromResult(s_shows.AsEnumerable());
     }
+
+    public Task<Show> Get(int id)
+    {
+        return Task.FromResult(s_shows.Single(x => x.Id == id));
+    }
+
+    public Task<Show?> Find(string partOfTitle, int releaseYear)
+    {
+        return Task.FromResult(s_shows.SingleOrDefault(x => x.Title.Contains(partOfTitle) && x.ReleaseDate.Year == releaseYear));
+    }
 }
