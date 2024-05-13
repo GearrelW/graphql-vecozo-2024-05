@@ -2,7 +2,7 @@
 
 ## Exercise 1. Retrieve multiple users
 
-The API should also support a way to retrieve all users via a new entry point **`users`**. The new entrypoint should always return a list (not a null value) and although the list might be empty, it should never contain `null` values.
+The API should also support a way to retrieve all users via a new entry point `users`. The new entrypoint should always return a list (not a null value) and although the list might be empty, it should never contain `null` values.
 
 Adjust your query to now use your new `users` entrypoint.
 
