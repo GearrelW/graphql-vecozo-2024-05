@@ -58,10 +58,7 @@ namespace VecozoApi.Tests
                 .AddQueryType<QueryType>()
                 .AddMutationType<MutationType>()
                 .Services
-                .AddTransient(services =>
-                {
-                    return mockShowRepo.Object;
-                })
+                .AddTransient(_ => mockShowRepo.Object)
                 .BuildServiceProvider()
                 .ExecuteRequestAsync("{ shows { title } }");
 
