@@ -11,7 +11,7 @@ As with most code, testing is important. Your GraphQL endpoints included. For te
 **Integration test a few of your entrypoints**. A few interesting scenarios:
 
 - testing whether the schema remains unchanged
-- testing the happy path - whether data
+- testing the happy path - whether data is returned correctly with/without mock data
   - this will probably include implementing mocks with mock data
 - testing for exceptions
 
