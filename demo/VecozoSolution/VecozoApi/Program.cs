@@ -18,7 +18,9 @@ builder.Services
     //.AddMaxExecutionDepthRule(10)
     //.AddDiagnosticEventListener()
     .AddFiltering()
-    .AddQueryType<QueryType>();
+    .AddQueryType<QueryType>()
+    .AddMutationType<MutationType>();
+    //.AddSubscriptionType<>();
 
 var app = builder.Build();
 

@@ -40,4 +40,11 @@ public class ShowRepository
     {
         return Task.FromResult(s_shows.SingleOrDefault(x => x.Title.Contains(partOfTitle) && x.ReleaseDate.Year == releaseYear));
     }
+
+    public Task<Show> Add(Show show)
+    {
+        show.Id = s_shows.Max(x => x.Id) + 1;
+        s_shows.Add(show);
+        return Task.FromResult(show);
+    }
 }
