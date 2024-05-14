@@ -9,7 +9,7 @@ public class Query
 
     //public Show FavoriteShow => throw new NotImplementedException("ga weg");
 
-    public Show FavoriteShow => new()
+    public TvShow FavoriteShow => new()
     {
         Id = 4,
         Title = "Debiteuren crediteuren",
@@ -18,9 +18,9 @@ public class Query
 
     public IEnumerable<object> Shows { get; set; }
 
-    public Show GetShowById { get; set; }
+    public TvShow GetShowById { get; set; }
 
-    public Show? FindShowByTitleAndReleaseYear { get; set; }
+    public TvShow? FindShowByTitleAndReleaseYear { get; set; }
 
     //public Show GetShowById2(int id, [Service] )
     //{

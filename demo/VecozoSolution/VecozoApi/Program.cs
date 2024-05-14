@@ -1,4 +1,5 @@
 using VecozoApi;
+using VecozoApi.DataLoaders;
 using VecozoApi.Repositories;
 using VecozoApi.Types;
 
@@ -9,8 +10,14 @@ builder.Services.AddTransient<IShowRepository, ShowRepository>();
 builder.Services.AddTransient<IStreamingdienstRepository, StreamingdienstRepository>();
 builder.Services.AddTransient<EpisodeRepository>();
 
+
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
+
 builder.Services
     .AddGraphQLServer()
+    .AddAuthorization()
     .ModifyRequestOptions(options =>
     {
         options.IncludeExceptionDetails = builder.Environment.IsDevelopment();
@@ -21,6 +28,7 @@ builder.Services
     //.AddDiagnosticEventListener()
     .AddType<StreamingShowType>()
     .AddType<TvShowType>()
+    .AddDataLoader<EpisodeBatchDataLoader>()
     .AddFiltering()
     .AddQueryType<QueryType>()
     .AddMutationType<MutationType>();

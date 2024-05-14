@@ -2,7 +2,7 @@
 
 namespace VecozoApi.Entities;
 
-public class Show : IShow
+public class TvShow : IShow
 {
     public int Id { get; set; }
 
@@ -14,9 +14,9 @@ public class Show : IShow
 
     public bool IsLive { get; set; }
 
-    //public async Task<IEnumerable<Episode>> Episodes([Service] EpisodeRepository episodeRepository)
+    //public async Task<IEnumerable<Episode>> Episodes([Service] EpisodeRepository episoderepository)
     //{
-    //    return await episodeRepository.GetAllForShow(Id);
+    //    return await episoderepository.GetAllForShow(Id);
     //}
 
     // Int String Bool ID

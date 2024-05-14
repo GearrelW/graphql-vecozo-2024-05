@@ -4,9 +4,9 @@ namespace VecozoApi.Repositories
 {
     public interface IShowRepository
     {
-        Task<Show> Add(Show show);
-        Task<Show?> Find(string partOfTitle, int releaseYear);
-        Task<Show> Get(int id);
-        Task<IEnumerable<Show>> GetAll();
+        Task<TvShow> Add(TvShow show);
+        Task<TvShow?> Find(string partOfTitle, int releaseYear);
+        Task<TvShow> Get(int id);
+        Task<IEnumerable<TvShow>> GetAll();
     }
 }

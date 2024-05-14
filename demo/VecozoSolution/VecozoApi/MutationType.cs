@@ -19,7 +19,7 @@ public class MutationType : ObjectType
                 var input = ctx.ArgumentValue<AddShowInput>("input");
 
                 var showRepo = ctx.Service<IShowRepository>();
-                var updatedShow = await showRepo.Add(new Show
+                var updatedShow = await showRepo.Add(new TvShow
                 {
                     Title = input.Title,
                     ReleaseDate = input.ReleaseDate

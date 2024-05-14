@@ -46,7 +46,7 @@ namespace VecozoApi.Tests
             // FakeItEasy
 
             var mockShowRepo = new Mock<IShowRepository>();
-            mockShowRepo.Setup(x => x.GetAll()).ReturnsAsync(new List<Show>
+            mockShowRepo.Setup(x => x.GetAll()).ReturnsAsync(new List<TvShow>
             {
                 new() { Title = "test1" },
                 new() { Title = "test2" }

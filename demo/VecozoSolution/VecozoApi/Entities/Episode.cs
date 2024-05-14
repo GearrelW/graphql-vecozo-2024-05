@@ -10,7 +10,7 @@ public class Episode
 
     public int ShowId { get; set; }
 
-    public async Task<Show> Show([Service] ShowRepository showRepository)
+    public async Task<TvShow> Show([Service] ShowRepository showRepository)
     {
         await Console.Out.WriteLineAsync("Hoi!");
         return await showRepository.Get(ShowId);

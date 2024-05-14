@@ -4,7 +4,7 @@ namespace VecozoApi.Repositories;
 
 public class ShowRepository : IShowRepository
 {
-    private static List<Show> s_shows = new()
+    private static List<TvShow> s_shows = new()
     {
         new()
         {
@@ -26,22 +26,22 @@ public class ShowRepository : IShowRepository
         }
     };
 
-    public Task<IEnumerable<Show>> GetAll()
+    public Task<IEnumerable<TvShow>> GetAll()
     {
         return Task.FromResult(s_shows.AsEnumerable());
     }
 
-    public Task<Show> Get(int id)
+    public Task<TvShow> Get(int id)
     {
         return Task.FromResult(s_shows.Single(x => x.Id == id));
     }
 
-    public Task<Show?> Find(string partOfTitle, int releaseYear)
+    public Task<TvShow?> Find(string partOfTitle, int releaseYear)
     {
         return Task.FromResult(s_shows.SingleOrDefault(x => x.Title.Contains(partOfTitle) && x.ReleaseDate.Year == releaseYear));
     }
 
-    public Task<Show> Add(Show show)
+    public Task<TvShow> Add(TvShow show)
     {
         show.Id = s_shows.Max(x => x.Id) + 1;
         s_shows.Add(show);
