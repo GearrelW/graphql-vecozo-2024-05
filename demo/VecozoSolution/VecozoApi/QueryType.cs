@@ -15,7 +15,7 @@ public class QueryType : ObjectType<Query>
         descriptor
             .Field(f => f.GetShowById)
             .Argument("id", a => a.Type<NonNullType<IntType>>())
-            .Type<NonNullType<ShowType>>()
+            .Type<NonNullType<TvShowType>>()
             .Resolve(async ctx =>
             {
                 var id = ctx.ArgumentValue<int>("id");
@@ -26,7 +26,7 @@ public class QueryType : ObjectType<Query>
         descriptor
             .Field(f => f.FindShowByTitleAndReleaseYear)
             .Argument("input", a => a.Type<NonNullType<FindShowByTitleAndReleaseYearInputType>>())
-            .Type<ShowType>()
+            .Type<TvShowType>()
             .Resolve(async ctx =>
             {
                 var input = ctx.ArgumentValue<FindShowByTitleAndReleaseYearInput>("input");
@@ -44,12 +44,29 @@ public class QueryType : ObjectType<Query>
 
         descriptor
             .Field(f => f.Shows)
-            .Type<NonNullType<ListType<NonNullType<ShowType>>>>()
+            .Type<NonNullType<ListType<NonNullType<ShowUnionType>>>>()
             .UseFiltering()
             .Resolve(async ctx =>
             {
                 var showRepository = ctx.Service<IShowRepository>();
-                return await showRepository.GetAll();
+                var streamingdienstRepository = ctx.Service<IStreamingdienstRepository>();
+
+                var listVanAlles = new List<object>();
+                listVanAlles.AddRange(await showRepository.GetAll());
+
+                var streamingShows = await streamingdienstRepository.GetAll();
+                foreach (var show in streamingShows)
+                {
+                    if (show.MinimumAge >= 16)
+                    {
+                        listVanAlles.Add(new NotOldEnough { MInimumAge = show.MinimumAge });
+                    }
+                    else
+                    {
+                        listVanAlles.Add(show);
+                    }
+                }
+                return listVanAlles;
             });
 
         //descriptor

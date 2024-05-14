@@ -13,7 +13,7 @@ public class MutationType : ObjectType
         descriptor
             .Field("addShow")
             .Argument("input", a => a.Type<AddShowInputType>())
-            .Type<NonNullType<ShowType>>()
+            .Type<NonNullType<ShowUnionType>>()
             .Resolve(async ctx =>
             {
                 var input = ctx.ArgumentValue<AddShowInput>("input");

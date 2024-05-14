@@ -16,7 +16,7 @@ public class Query
         ReleaseDate = new DateOnly(1995, 1, 1)
     };
 
-    public IEnumerable<Show> Shows { get; set; }
+    public IEnumerable<object> Shows { get; set; }
 
     public Show GetShowById { get; set; }
 

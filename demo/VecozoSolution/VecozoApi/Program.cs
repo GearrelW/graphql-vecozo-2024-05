@@ -1,10 +1,12 @@
 using VecozoApi;
 using VecozoApi.Repositories;
+using VecozoApi.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // registratie
 builder.Services.AddTransient<IShowRepository, ShowRepository>();
+builder.Services.AddTransient<IStreamingdienstRepository, StreamingdienstRepository>();
 builder.Services.AddTransient<EpisodeRepository>();
 
 builder.Services
@@ -17,6 +19,8 @@ builder.Services
     })
     //.AddMaxExecutionDepthRule(10)
     //.AddDiagnosticEventListener()
+    .AddType<StreamingShowType>()
+    .AddType<TvShowType>()
     .AddFiltering()
     .AddQueryType<QueryType>()
     .AddMutationType<MutationType>();

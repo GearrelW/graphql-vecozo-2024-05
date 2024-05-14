@@ -2,7 +2,7 @@
 
 namespace VecozoApi.Entities;
 
-public class Show
+public class Show : IShow
 {
     public int Id { get; set; }
 
@@ -11,6 +11,8 @@ public class Show
     public DateOnly ReleaseDate { get; set; }
 
     public IEnumerable<Episode> Episodes { get; set; }
+
+    public bool IsLive { get; set; }
 
     //public async Task<IEnumerable<Episode>> Episodes([Service] EpisodeRepository episodeRepository)
     //{
