@@ -45,6 +45,7 @@ public class QueryType : ObjectType<Query>
         descriptor
             .Field(f => f.Shows)
             .Type<NonNullType<ListType<NonNullType<ShowType>>>>()
+            .UseFiltering()
             .Resolve(async ctx =>
             {
                 var showRepository = ctx.Service<ShowRepository>();

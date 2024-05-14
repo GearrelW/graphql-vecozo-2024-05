@@ -17,6 +17,7 @@ builder.Services
     })
     //.AddMaxExecutionDepthRule(10)
     //.AddDiagnosticEventListener()
+    .AddFiltering()
     .AddQueryType<QueryType>();
 
 var app = builder.Build();
