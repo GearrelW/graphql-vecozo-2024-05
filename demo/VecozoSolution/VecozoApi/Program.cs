@@ -4,7 +4,7 @@ using VecozoApi.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 // registratie
-builder.Services.AddTransient<ShowRepository>();
+builder.Services.AddTransient<IShowRepository, ShowRepository>();
 builder.Services.AddTransient<EpisodeRepository>();
 
 builder.Services

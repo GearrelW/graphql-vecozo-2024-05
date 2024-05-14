@@ -9,6 +9,7 @@ public class ShowType : ObjectType<Show>
     {
         descriptor
             .Field(f => f.Episodes)
+            .Name("oogabooga")
             .Type<NonNullType<ListType<NonNullType<EpisodeType>>>>()
             .Resolve(async ctx =>
             {

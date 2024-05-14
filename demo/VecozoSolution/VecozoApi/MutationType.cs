@@ -18,7 +18,7 @@ public class MutationType : ObjectType
             {
                 var input = ctx.ArgumentValue<AddShowInput>("input");
 
-                var showRepo = ctx.Service<ShowRepository>();
+                var showRepo = ctx.Service<IShowRepository>();
                 var updatedShow = await showRepo.Add(new Show
                 {
                     Title = input.Title,

@@ -1,0 +1,113 @@
+﻿schema {
+  query: Query
+  mutation: MutationType
+}
+
+type Episode {
+  show: Show!
+  id: Int!
+  title: String!
+  showId: Int!
+}
+
+type MutationType {
+  addShow(input: AddShowInput): Show!
+}
+
+type Query {
+  getShowById(id: Int!): Show!
+  findShowByTitleAndReleaseYear(input: FindShowByTitleAndReleaseYearInput!): Show
+  andertekstje: String!
+  shows(where: ShowFilterInput): [Show!]!
+  tekstje: String!
+  favoriteShow: Show!
+}
+
+type Show {
+  oogabooga: [Episode!]!
+  id: Int!
+  title: String!
+  releaseDate: Date!
+}
+
+input AddShowInput {
+  title: String!
+  releaseDate: Date!
+}
+
+input DateOperationFilterInput {
+  eq: Date
+  neq: Date
+  in: [Date]
+  nin: [Date]
+  gt: Date
+  ngt: Date
+  gte: Date
+  ngte: Date
+  lt: Date
+  nlt: Date
+  lte: Date
+  nlte: Date
+}
+
+input EpisodeFilterInput {
+  and: [EpisodeFilterInput!]
+  or: [EpisodeFilterInput!]
+  id: IntOperationFilterInput
+  title: StringOperationFilterInput
+  showId: IntOperationFilterInput
+}
+
+input FindShowByTitleAndReleaseYearInput {
+  partOfTitle: String!
+  releaseYear: Int!
+}
+
+input IntOperationFilterInput {
+  eq: Int
+  neq: Int
+  in: [Int]
+  nin: [Int]
+  gt: Int
+  ngt: Int
+  gte: Int
+  ngte: Int
+  lt: Int
+  nlt: Int
+  lte: Int
+  nlte: Int
+}
+
+input ListFilterInputTypeOfEpisodeFilterInput {
+  all: EpisodeFilterInput
+  none: EpisodeFilterInput
+  some: EpisodeFilterInput
+  any: Boolean
+}
+
+input ShowFilterInput {
+  and: [ShowFilterInput!]
+  or: [ShowFilterInput!]
+  id: IntOperationFilterInput
+  title: StringOperationFilterInput
+  releaseDate: DateOperationFilterInput
+  episodes: ListFilterInputTypeOfEpisodeFilterInput
+}
+
+input StringOperationFilterInput {
+  and: [StringOperationFilterInput!]
+  or: [StringOperationFilterInput!]
+  eq: String
+  neq: String
+  contains: String
+  ncontains: String
+  in: [String]
+  nin: [String]
+  startsWith: String
+  nstartsWith: String
+  endsWith: String
+  nendsWith: String
+}
+
+"The `Date` scalar represents an ISO-8601 compliant date type."
+scalar Date

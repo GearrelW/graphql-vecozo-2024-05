@@ -2,7 +2,7 @@
 
 namespace VecozoApi.Repositories;
 
-public class ShowRepository
+public class ShowRepository : IShowRepository
 {
     private static List<Show> s_shows = new()
     {

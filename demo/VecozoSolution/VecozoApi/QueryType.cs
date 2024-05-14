@@ -19,7 +19,7 @@ public class QueryType : ObjectType<Query>
             .Resolve(async ctx =>
             {
                 var id = ctx.ArgumentValue<int>("id");
-                var showRepository = ctx.Service<ShowRepository>();
+                var showRepository = ctx.Service<IShowRepository>();
                 return await showRepository.Get(id);
             });
 
@@ -30,7 +30,7 @@ public class QueryType : ObjectType<Query>
             .Resolve(async ctx =>
             {
                 var input = ctx.ArgumentValue<FindShowByTitleAndReleaseYearInput>("input");
-                var showRepository = ctx.Service<ShowRepository>();
+                var showRepository = ctx.Service<IShowRepository>();
                 return await showRepository.Find(input.PartOfTitle, input.ReleaseYear);
             });
 
@@ -39,7 +39,7 @@ public class QueryType : ObjectType<Query>
             .Type<NonNullType<StringType>>()
             .Resolve(ctx =>
             {
-                return "hey nu vanuit resolve";
+                return "hey nu vanuit resolve 2";
             });
 
         descriptor
@@ -48,7 +48,7 @@ public class QueryType : ObjectType<Query>
             .UseFiltering()
             .Resolve(async ctx =>
             {
-                var showRepository = ctx.Service<ShowRepository>();
+                var showRepository = ctx.Service<IShowRepository>();
                 return await showRepository.GetAll();
             });
 

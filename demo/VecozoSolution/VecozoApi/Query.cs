@@ -27,7 +27,7 @@ public class Query
 
     //}
 
-    //public async Task<IEnumerable<Show>> Shows([Service] ShowRepository showRepository)
+    //public async Task<IEnumerable<Show>> Shows([Service] IShowRepository showRepository)
     //{
     //    return await showRepository.GetAll();
     //}
